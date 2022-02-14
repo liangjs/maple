@@ -51,10 +51,10 @@ $(foreach name,$(pintool_names),$(eval $(name)_objs := $($(name)_objs:%=$(buildd
 $(foreach name,$(cmdtool_names),$(eval $(name)_objs := $($(name)_objs:%=$(builddir)%)))
 
 # set compile flags
-CFLAGS += -fPIC -D_GNU_SOURCE $(user_flags)
-CXXFLAGS += -fPIC -D_GNU_SOURCE $(user_flags)
+CFLAGS += -fPIC -D_GNU_SOURCE $(user_flags) -fabi-version=2 -D_GLIBCXX_USE_CXX11_ABI=0 -pthread
+CXXFLAGS += -fPIC -D_GNU_SOURCE $(user_flags) -fabi-version=2 -D_GLIBCXX_USE_CXX11_ABI=0 -pthread
 INCS += -I$(srcdir) -I$(PROTOBUF_HOME)/include
-LDFLAGS += 
+LDFLAGS += -pthread
 LPATHS += -L$(PROTOBUF_HOME)/lib -Wl,-rpath,$(PROTOBUF_HOME)/lib
 LIBS += -lprotobuf
 TOOL_LDFLAGS +=

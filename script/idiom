@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # setup python
-PYTHON=python
+PYTHON=python2
 
 # obtain the script home
 SCRIPT_HOME=$(dirname $(readlink -f $0))
